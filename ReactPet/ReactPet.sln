@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactPet", "ReactPet.csproj", "{F467140D-D248-467B-A243-AEEBA0EA5FA6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{D509257D-1793-4385-8F4C-B6A26BAA5C98}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contract", "Contract", "{01ECDAF6-30A2-4123-ABCB-96B81A6126FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Implementation", "Implementation", "{7E75B82F-EE1E-4E96-B742-FDF8771177CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallonServiceContract", "..\IBallonService\BallonServiceContract.csproj", "{95276E48-33EE-4AC1-822E-5A4A89CB73DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InMemoryBallonService", "..\InMemoryBallonService\InMemoryBallonService.csproj", "{01DD3908-CE22-43ED-BE5B-2E4847C33BA0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F467140D-D248-467B-A243-AEEBA0EA5FA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F467140D-D248-467B-A243-AEEBA0EA5FA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F467140D-D248-467B-A243-AEEBA0EA5FA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F467140D-D248-467B-A243-AEEBA0EA5FA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95276E48-33EE-4AC1-822E-5A4A89CB73DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95276E48-33EE-4AC1-822E-5A4A89CB73DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95276E48-33EE-4AC1-822E-5A4A89CB73DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95276E48-33EE-4AC1-822E-5A4A89CB73DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01DD3908-CE22-43ED-BE5B-2E4847C33BA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01DD3908-CE22-43ED-BE5B-2E4847C33BA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01DD3908-CE22-43ED-BE5B-2E4847C33BA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01DD3908-CE22-43ED-BE5B-2E4847C33BA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{01ECDAF6-30A2-4123-ABCB-96B81A6126FA} = {D509257D-1793-4385-8F4C-B6A26BAA5C98}
+		{7E75B82F-EE1E-4E96-B742-FDF8771177CC} = {D509257D-1793-4385-8F4C-B6A26BAA5C98}
+		{95276E48-33EE-4AC1-822E-5A4A89CB73DF} = {01ECDAF6-30A2-4123-ABCB-96B81A6126FA}
+		{01DD3908-CE22-43ED-BE5B-2E4847C33BA0} = {7E75B82F-EE1E-4E96-B742-FDF8771177CC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86BC1609-CAD2-49E5-934B-DC097FC0CC0C}
+	EndGlobalSection
+EndGlobal
