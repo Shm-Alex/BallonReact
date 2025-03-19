@@ -1,8 +1,14 @@
+using BallonServiceContract;
+using InMemoryBallonService;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<IBallonService, InMemoryBallonService.InMemoryBallonService>();
+builder.Services.AddSingleton<MyDataContext>();
 
 var app = builder.Build();
 
