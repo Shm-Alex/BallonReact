@@ -30,7 +30,8 @@ namespace ReactPet.Controllers
         [HttpPatch]
         public IActionResult Update(Balloon b)
         {
-            Balloon? balloon = ballonService.Update(b);
+            var balloon = ballonService.Update(b);
+
             if (balloon != null) return Ok(balloon);
             return NotFound(b.Id);
         }
