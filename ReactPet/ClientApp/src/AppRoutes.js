@@ -1,8 +1,9 @@
+import Ballons from "./components/Ballon";
 import { Counter } from "./components/Counter";
 import { FetchData } from "./components/FetchData";
 import { Home } from "./components/Home";
 
-const AppRoutes = [
+const  AppRoutes = [
   {
     index: true,
     element: <Home />
@@ -14,7 +15,11 @@ const AppRoutes = [
   {
     path: '/fetch-data',
     element: <FetchData />
-  }
+  },
+  {
+    path: '/ballons',
+    element: <Ballons />
+  },
 ];
 
 export default AppRoutes;
