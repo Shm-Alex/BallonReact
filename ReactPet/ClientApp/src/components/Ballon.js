@@ -1,84 +1,108 @@
+import { Button } from 'bootstrap';
 import React, { useEffect, useState } from 'react';
-
+const url = "api/Ballon/";
 const Ballons = () => {
     const [allBallons, setAllBallons] = useState([]);
 
     const getBallons = async () => {
         const options = {
             method: "GET",
+            headers:new Headers()
         };
         
-        //console.log('Get Ballons');
-        const result = await fetch("api/Ballon/", options);
+        const result = await fetch(url, options);
         if (result.ok) {
-            //console.log('result ok');
             const ballons = await result.json();
             setAllBallons(ballons);
             return ballons;
         }
     };
-    const tst=[
-        {
-            "id": 1,
-            "r": 11,
-            "collor": 2,
-            "name": "24",
-            "pressureAbs": 11.12
-        },
-        {
-            "id": 2,
-            "r": 12,
-            "collor": 22,
-            "name": "2",
-            "pressureAbs": 12.12
-        },
-        {
-            "id": 3,
-            "r": 3,
-            "collor": 6,
-            "name": "5",
-            "pressureAbs": 55
+
+    const addBallon = async () => {
+       // debugger;
+        const ballon={
+            name: document.querySelector('#name').value,
+            r: document.querySelector('#radious').value,
+            collor: document.querySelector('#color').value,
+            pressureAbs: document.querySelector('#pressureAbs').value,
         }
-    ]
-useEffect(() => {
-   //console.log('useEffect');
-   // console.log(getBallons())
-    getBallons();}, []);
-   // console.log(allBallons);
+        console.log(ballon);
+        //debugger;
+        const options = {
+            method: "post",
+            headers:new Headers(    { "Content-Type": "application/json" }),
+            body: JSON.stringify(ballon),   
+        };
+        
+        const result = await fetch(url, options);
+        if (result.ok) {
+            const ballon = await result.json();
+            allBallons.push(ballon);
+            setAllBallons(allBallons.slice());
+            return allBallons;
+        }
+    };
+    const deleteBallon = async (id) => {
+        const ballon={
+            name: document.querySelector('#name').value,
+            r: document.querySelector('#radious').value,
+            collor: document.querySelector('#color').value,
+            pressureAbs: document.querySelector('#pressureAbs').value,
+        }
+        console.log(ballon);
+        //debugger;
+        const options = {
+            method: "delete",
+            headers:new Headers() ,
+        };
+        
+        const result = await fetch(url+"/${id}", options);
+        if (result.ok) {
+           //const ballon = await result.json();
+            
+            setAllBallons(allBallons.filter(x=>x.id!==id));
+            return allBallons;
+        }
+
+    }
+    useEffect(() => {
+        getBallons();
+    }, []);
+
     return (
         <div>
             <h1>Ballons</h1>
             <p>new Ballon</p>
             <div style={{ margin: "10px" }}>
-                <input type="text" placeholder="Enter Ballon Name" />
-                <input type="text" placeholder="Enter Ballon Radious" />
-                <input type="text" placeholder="Enter Ballon Color" />
-                <input type="text" placeholder="Enter Ballon PressureAbs" />
+                <input type="text" id='name' placeholder="Enter Ballon Name" />
+                <input type="text" id='radious' placeholder="Enter Ballon Radious" />
+                <input type="text" id='color' placeholder="Enter Ballon Color" />
+                <input type="text" id='pressureAbs'  placeholder="Enter Ballon PressureAbs" />
             </div>
-            <button>Add</button>
+            <button onClick={addBallon}>Add</button>
             <div>
-            <table style={{ margin: "10px" }}>
-                {
-                    //tst
-                   
-                    allBallons.map((ballon) => {
-                        const ballonInfo =(
-                            <thead key={ballon.id} style={{ margin: "10px" }}>
-                                <tr>
-                                <td>Name: {ballon.name}</td>
-                                <td>Radious: {ballon.r}</td>
-                                <td>Color: {ballon.collor}</td>
-                                <td>PressureAbs: {ballon.pressureAbs}</td>
-                                </tr>
-                            </thead>
-                            );
-                        return ballonInfo;
-                    })
-                }
-                 </table>
+                <table style={{ margin: "10px" ,border:"1px solid white"}}>
+                    {allBallons.map((ballon) => BallonRow(ballon))}
+                </table>
             </div>
         </div>
     );
 };
 
 export default Ballons;
+const BallonRow=(ballon)=>{
+    return(
+        <thead key={ballon.id} style={{ margin: "10px" }}>
+            <tr>
+                <td style={{border:"1px solid white"}}>Id: {ballon.id}</td>
+                <td style={{border:"1px solid white"}}>Name: {ballon.name}</td>
+                <td style={{border:"1px solid white"}}>Radious: {ballon.r}</td>
+                <td style={{border:"1px solid white"}}>Color: {ballon.collor}</td>
+                <td style={{border:"1px solid white"}}>PressureAbs: {ballon.pressureAbs}</td>
+                <td style={{border:"1px solid white"}}><button onClick={()=>{deleteBallon(ballon.id)}} >Delete</button></td>
+                <td style={{border:"1px solid white"}}><button>Update</button></td>
+                
+            </tr>
+        </thead>
+    );
+}
